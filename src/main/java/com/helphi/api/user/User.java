@@ -1,23 +1,28 @@
 package com.helphi.api.user;
 
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
-import lombok.Getter;
+import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 
 import java.util.Date;
+import java.util.UUID;
 
-@Getter
-@Setter
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+@MappedSuperclass
 public abstract class User {
-    private String id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private UUID id;
     private String email;
-    private String firstname;
+    private String title;
+    private String forename;
     private String middlenames;
     private String lastname;
+    @Column(name="contact_number")
     private String contactNumber;
+    @Column(name="alternative_contact_number")
     private String alternateContactNumber;
-    private Date dateOfBirth;
-
-
 }

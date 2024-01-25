@@ -1,25 +1,60 @@
 package com.helphi.api.user;
 
-import com.helphi.api.GpSurgery;
+import com.helphi.api.Address;
+import com.helphi.api.Gp;
 import com.helphi.api.HealthCondition;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.Setter;
-
+import java.util.Date;
 import java.util.List;
+import java.util.UUID;
 
-@Getter
-@Setter
+import jakarta.persistence.*;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
+
+@Data
+@EqualsAndHashCode(callSuper = true)
+@NoArgsConstructor
+@Entity
+@Table(name="patient")
 public class Patient extends User {
+    @Column(name="nhs_number")
     private String nhsNumber;
-    private GpSurgery gpSurgery;
+
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "gp_id", referencedColumnName = "id")
+    private Gp gp;
+
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "address_id", referencedColumnName = "id")
+    private Address address;
+
+    @OneToMany(mappedBy="patient")
+    @JoinTable(
+            name = "patient_condition_link",
+            joinColumns = @JoinColumn(name = "patient_id"),
+            inverseJoinColumns = @JoinColumn(name = "condition_id")
+    )
     private List<HealthCondition> conditions;
-    public Patient(String nhsNumber, GpSurgery gpSurgery, List<HealthCondition> conditions) {
-        super();
+
+    @Column(name="date_of_birth")
+    private Date dateOfBirth;
+
+    public Patient(UUID id,
+                   String email,
+                   String title,
+                   String forename,
+                   String middlenames,
+                   String lastname,
+                   String contactNumber,
+                   String alternateContactNumber,
+                   Date dateOfBirth,
+                   String nhsNumber,
+                   Gp gp,
+                   List<HealthCondition> conditions) {
+        super(id, email, title, forename, middlenames, lastname, contactNumber, alternateContactNumber);
         this.nhsNumber = nhsNumber;
-        this.gpSurgery = gpSurgery;
+        this.gp = gp;
         this.conditions = conditions;
-
-
     }
 }
