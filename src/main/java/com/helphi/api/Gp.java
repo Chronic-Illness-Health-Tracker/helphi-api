@@ -7,6 +7,7 @@ import java.util.UUID;
 
 @Entity
 @Data
+@Table(name="gp", schema="helphi")
 public class Gp {
 
     @Id

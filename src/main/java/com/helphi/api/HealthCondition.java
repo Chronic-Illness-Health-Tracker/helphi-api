@@ -6,7 +6,7 @@ import jakarta.persistence.*;
 import java.util.UUID;
 
 @Entity
-@Table(name="health_condition")
+@Table(name="health_condition", schema="helphi")
 public class HealthCondition {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

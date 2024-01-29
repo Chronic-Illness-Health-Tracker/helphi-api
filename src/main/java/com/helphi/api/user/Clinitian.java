@@ -11,7 +11,7 @@ import java.util.UUID;
 @EqualsAndHashCode(callSuper = true)
 @Entity
 @NoArgsConstructor
-@Table(name="clinitian")
+@Table(name="clinitian", schema="helphi")
 public class Clinitian extends User {
 
     @ManyToOne(cascade = CascadeType.ALL)

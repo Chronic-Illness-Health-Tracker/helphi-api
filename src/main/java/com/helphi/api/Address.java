@@ -12,7 +12,7 @@ import java.util.UUID;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name="address")
+@Table(name="address", schema="helphi")
 public class Address {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

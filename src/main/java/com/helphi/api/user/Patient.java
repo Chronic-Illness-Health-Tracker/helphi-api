@@ -16,7 +16,7 @@ import lombok.NoArgsConstructor;
 @EqualsAndHashCode(callSuper = true)
 @NoArgsConstructor
 @Entity
-@Table(name="patient")
+@Table(name="patient", schema="helphi")
 public class Patient extends User {
     @Column(name="nhs_number")
     private String nhsNumber;
@@ -29,7 +29,7 @@ public class Patient extends User {
     @JoinColumn(name = "address_id", referencedColumnName = "id")
     private Address address;
 
-    @OneToMany(mappedBy="patient")
+    @OneToMany
     @JoinTable(
             name = "patient_condition_link",
             joinColumns = @JoinColumn(name = "patient_id"),

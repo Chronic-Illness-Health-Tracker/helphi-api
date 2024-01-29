@@ -10,6 +10,7 @@ import java.util.UUID;
 @Data
 @NoArgsConstructor
 @Entity
+@Table(name="gp_surgery", schema="helphi")
 public class GpSurgery {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
