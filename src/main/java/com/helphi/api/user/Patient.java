@@ -8,6 +8,9 @@ import java.util.List;
 import java.util.UUID;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Max;
+import jakarta.validation.constraints.Past;
+import jakarta.validation.constraints.Size;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
@@ -19,6 +22,7 @@ import lombok.NoArgsConstructor;
 @Table(name="patient", schema="helphi")
 public class Patient extends User {
     @Column(name="nhs_number")
+    @Size(max = 10, message = "NHS number should not be greater than 10 characters")
     private String nhsNumber;
 
     @ManyToOne(cascade = CascadeType.ALL)
@@ -38,6 +42,7 @@ public class Patient extends User {
     private List<HealthCondition> conditions;
 
     @Column(name="date_of_birth")
+    @Past(message = "date of birth must not be in the future")
     private Date dateOfBirth;
 
     public Patient(UUID id,
