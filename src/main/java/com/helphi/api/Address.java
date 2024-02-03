@@ -1,6 +1,5 @@
 package com.helphi.api;
 
-
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Size;
