@@ -7,8 +7,7 @@ import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
-import java.util.Date;
+import org.hibernate.annotations.ColumnTransformer;
 import java.util.UUID;
 
 @Data
@@ -21,18 +20,25 @@ public abstract class User {
     private UUID id;
     @Size(max = 320, message = "email should not be greater than 320 characters")
     @Email(message = "email is not valid")
+    @Column(name="email")
     private String email;
-    private String title;
+    @Enumerated(EnumType.STRING)
+    @Column(name="title")
+    @ColumnTransformer(write = "?::user_title")
+    private Title title;
     @Size(max = 35, message = "forname should not be greater than 35 characters")
+    @Column(name="forename")
     private String forename;
     @Size(max = 35, message = "middlenames should not be greater than 35 characters")
+    @Column(name="middlenames")
     private String middlenames;
     @Size(max = 35, message = "lastname should not be greater than 35 characters")
+    @Column(name="lastname")
     private String lastname;
     @Column(name="contact_number")
     @Size(max = 15, message = "Contact number should not be greater than 15 characters")
     private String contactNumber;
-    @Column(name="alternative_contact_number")
     @Size(max = 15, message = "Contact number should not be greater than 15 characters")
+    @Column(name="alternate_contact_number")
     private String alternateContactNumber;
 }

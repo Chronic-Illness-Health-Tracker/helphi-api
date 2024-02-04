@@ -21,6 +21,7 @@ public class HealthCondition {
     @ManyToOne(cascade = CascadeType.MERGE)
     @JoinColumn(name = "organisation_id", referencedColumnName = "id", nullable = false, foreignKey = @ForeignKey(name = "organisation_id"))
     private Organisation organisation;
+
     @Size(max = 45, message = "condition name should not be greater than 45 characters")
     private String name;
 

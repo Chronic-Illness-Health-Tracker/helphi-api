@@ -25,19 +25,19 @@ public class Patient extends User {
     @Size(max = 10, message = "NHS number should not be greater than 10 characters")
     private String nhsNumber;
 
-    @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "gp_id", referencedColumnName = "id")
+    @ManyToOne(cascade = CascadeType.MERGE)
+    @JoinColumn(name = "gp_id", referencedColumnName = "id", foreignKey = @ForeignKey(name = "gp_id"))
     private Gp gp;
 
     @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "address_id", referencedColumnName = "id")
+    @JoinColumn(name = "address_id", referencedColumnName = "id", foreignKey = @ForeignKey(name = "address_id"))
     private Address address;
 
     @OneToMany
     @JoinTable(
             name = "patient_condition_link",
             joinColumns = @JoinColumn(name = "patient_id"),
-            inverseJoinColumns = @JoinColumn(name = "condition_id")
+            inverseJoinColumns = @JoinColumn(name = "health_condition_id")
     )
     private List<HealthCondition> conditions;
 
@@ -47,7 +47,7 @@ public class Patient extends User {
 
     public Patient(UUID id,
                    String email,
-                   String title,
+                   Title title,
                    String forename,
                    String middlenames,
                    String lastname,

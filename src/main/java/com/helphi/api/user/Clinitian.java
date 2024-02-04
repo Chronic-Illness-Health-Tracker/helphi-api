@@ -19,7 +19,7 @@ public class Clinitian extends User {
     private Organisation organisation;
     public Clinitian(UUID id,
                      String email,
-                     String title,
+                     Title title,
                      String firstname,
                      String middlenames,
                      String lastname,

@@ -29,7 +29,7 @@ public class Address {
     @Column(name = "address_line_two")
     private String addresslineTwo;
     @Size(max = 8, message = "postcode should not be greater than 8 characters")
-    @ColumnTransformer(write = "UPPER(?)")
+    @ColumnTransformer(write = "UPPER(REPLACE(?,' ',''))")
     @Column(name = "postcode")
     private String postcode;
 }
