@@ -36,6 +36,7 @@ public class Patient extends User {
     @OneToMany
     @JoinTable(
             name = "patient_condition_link",
+            schema = "helphi",
             joinColumns = @JoinColumn(name = "patient_id"),
             inverseJoinColumns = @JoinColumn(name = "health_condition_id")
     )
