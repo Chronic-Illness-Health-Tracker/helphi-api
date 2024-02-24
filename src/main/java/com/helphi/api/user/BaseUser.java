@@ -14,7 +14,7 @@ import java.util.UUID;
 @AllArgsConstructor
 @NoArgsConstructor
 @MappedSuperclass
-public abstract class User {
+public abstract class BaseUser {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private UUID id;

@@ -12,12 +12,13 @@ import java.util.UUID;
 @Entity
 @NoArgsConstructor
 @Table(name="clinitian", schema="helphi")
-public class Clinitian extends User {
+public class Clinitian extends BaseUser {
 
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "organisation_id", referencedColumnName = "id")
     private Organisation organisation;
     public Clinitian(UUID id,
+                      UUID userId,
                      String email,
                      Title title,
                      String firstname,
@@ -26,6 +27,6 @@ public class Clinitian extends User {
                      String contactNumber,
                      String alternateContactNumber,
                      Date dateOfBirth) {
-        super(id, email, title, firstname,middlenames, lastname, contactNumber, alternateContactNumber);
+        super(id, userId, email, title, firstname,middlenames, lastname, contactNumber, alternateContactNumber);
     }
 }

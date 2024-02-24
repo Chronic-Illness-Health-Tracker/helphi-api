@@ -28,4 +28,5 @@ public class HealthCondition {
     @Column(name="short_name")
     @Size(max = 5, message = "short name should not be greater than 5 characters")
     private String shortName;
+
 }

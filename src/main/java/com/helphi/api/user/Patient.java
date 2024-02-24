@@ -8,7 +8,6 @@ import java.util.List;
 import java.util.UUID;
 
 import jakarta.persistence.*;
-import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Past;
 import jakarta.validation.constraints.Size;
 import lombok.Data;
@@ -20,7 +19,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Entity
 @Table(name="patient", schema="helphi")
-public class Patient extends User {
+public class Patient extends BaseUser {
     @Column(name="nhs_number")
     @Size(max = 10, message = "NHS number should not be greater than 10 characters")
     private String nhsNumber;
@@ -47,6 +46,7 @@ public class Patient extends User {
     private Date dateOfBirth;
 
     public Patient(UUID id,
+                   UUID userId,
                    String email,
                    Title title,
                    String forename,
@@ -58,7 +58,7 @@ public class Patient extends User {
                    String nhsNumber,
                    Gp gp,
                    List<HealthCondition> conditions) {
-        super(id, email, title, forename, middlenames, lastname, contactNumber, alternateContactNumber);
+        super(id, userId, email, title, forename, middlenames, lastname, contactNumber, alternateContactNumber);
         this.nhsNumber = nhsNumber;
         this.gp = gp;
         this.conditions = conditions;
