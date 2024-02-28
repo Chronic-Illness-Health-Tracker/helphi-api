@@ -11,14 +11,14 @@ import java.util.UUID;
 @EqualsAndHashCode(callSuper = true)
 @Entity
 @NoArgsConstructor
-@Table(name="clinitian", schema="helphi")
-public class Clinitian extends BaseUser {
+@Table(name="clinician", schema="helphi")
+public class Clinician extends BaseUser {
 
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "organisation_id", referencedColumnName = "id")
     private Organisation organisation;
-    public Clinitian(UUID id,
-                      UUID userId,
+    public Clinician(UUID id,
+                     String userId,
                      String email,
                      Title title,
                      String firstname,

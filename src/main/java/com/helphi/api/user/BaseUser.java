@@ -19,7 +19,7 @@ public abstract class BaseUser {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private UUID id;
     @Column(name="user_id")
-    private UUID userId;
+    private String userId;
     @Size(max = 320, message = "email should not be greater than 320 characters")
     @Email(message = "email is not valid")
     @Column(name="email")
