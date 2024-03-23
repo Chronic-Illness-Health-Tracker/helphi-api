@@ -46,7 +46,7 @@ public class Patient extends BaseUser {
     private Date dateOfBirth;
 
     public Patient(UUID id,
-                   UUID userId,
+                   String userId,
                    String email,
                    Title title,
                    String forename,
