@@ -18,7 +18,7 @@ public class HealthCondition {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private UUID id;
 
-    @ManyToOne(cascade = CascadeType.MERGE)
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "organisation_id", referencedColumnName = "id", nullable = false, foreignKey = @ForeignKey(name = "organisation_id"))
     private Organisation organisation;
 

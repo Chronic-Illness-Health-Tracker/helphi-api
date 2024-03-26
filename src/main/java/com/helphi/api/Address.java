@@ -20,12 +20,12 @@ public class Address {
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id")
     private UUID id;
-    @Size(max = 35, message = "address line one should not be greater than 35 characters")
+    @Size(max = 55, message = "address line one should not be greater than 55 characters")
     @ColumnTransformer(write = "INITCAP(?)")
     @Column(name = "address_line_one")
     private String addresslineOne;
     @ColumnTransformer(write = "INITCAP(?)")
-    @Size(max = 35, message = "address line two should not be greater than 35 characters")
+    @Size(max = 55, message = "address line two should not be greater than 55 characters")
     @Column(name = "address_line_two")
     private String addresslineTwo;
     @Size(max = 8, message = "postcode should not be greater than 8 characters")
