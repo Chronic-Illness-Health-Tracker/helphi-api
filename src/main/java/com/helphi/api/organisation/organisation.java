@@ -28,7 +28,7 @@ public class Organisation {
     @Size(max = 35, message = "country code should not be greater than 6 characters")
     @Column(name="country_code")
     private String countryCode;
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(cascade = CascadeType.MERGE)
     @JoinColumn(name = "address_id", referencedColumnName = "id", foreignKey = @ForeignKey(name = "address_id"))
     private Address contactAddress;
     @Size(max = 15, message = "contact number cannot be over 15 characters long")
